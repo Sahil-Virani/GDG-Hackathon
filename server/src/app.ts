@@ -24,7 +24,7 @@ app.use('/api', (req, res, next) => {
     windows.set(key, entry);
   }
   if (++entry.count > 1200) {
-    res.status(429).json({ error: 'A little too much runway traffic. Try again in a moment.' });
+    res.status(429).json({ error: 'A little too much mog traffic. Try again in a moment.' });
     return;
   }
   next();
@@ -182,7 +182,7 @@ app.post('/api/rooms/:code/try-on', async (req, res) => {
   }
 });
 app.use('/api', (_req, res) =>
-  res.status(404).json({ error: 'That runway action was not found.' }),
+  res.status(404).json({ error: 'That mog-off action was not found.' }),
 );
 app.use((error: unknown, _req: Request, res: Response, _next: NextFunction) => {
   if (error instanceof z.ZodError) {
@@ -207,5 +207,5 @@ app.use((error: unknown, _req: Request, res: Response, _next: NextFunction) => {
   console.error('Request failed:', error instanceof Error ? error.name : 'UnknownError');
   res
     .status(503)
-    .json({ error: 'The runway service is temporarily unavailable. Please try again.' });
+    .json({ error: 'The mog service is temporarily unavailable. Please try again.' });
 });

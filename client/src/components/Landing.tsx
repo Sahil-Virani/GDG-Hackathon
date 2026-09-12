@@ -68,7 +68,7 @@ export default function Landing() {
             The rules <ArrowUpRight size={13} />
           </a>
           <Button variant="secondary" onClick={() => setMode('join')}>
-            Join a battle <ArrowUpRight size={15} />
+            Join a mog-off <ArrowUpRight size={15} />
           </Button>
         </nav>
       </header>
@@ -91,21 +91,21 @@ export default function Landing() {
               <br />
               Great fits.
               <br />
-              <span>One winner.</span>
+              <span>Only one mogs.</span>
               <span className="heading-star">✳</span>
             </motion.h1>
             <p className="hero-description">
               Turn your camera on. Bring your best look.
               <br />
-              Battle your friends in a live fashion showdown,
+              Mog your friends in a live fit-check showdown,
               <br className="desktop-br" /> with an AI judge calling the shots.
             </p>
             <div className="hero-actions">
               <Button onClick={() => setMode('create')}>
-                Create battle <ArrowUpRight size={20} />
+                Start a mog-off <ArrowUpRight size={20} />
               </Button>
               <Button variant="secondary" onClick={() => setMode('join')}>
-                Join battle <ArrowRight size={18} />
+                Join a mog-off <ArrowRight size={18} />
               </Button>
             </div>
             <div className="hero-fineprint">
@@ -115,10 +115,10 @@ export default function Landing() {
               <i />
               <span>No downloads</span>
               <i />
-              <span>Just good taste</span>
+              <span>Just built different</span>
             </div>
             <div className="tech-caption">
-              <span>THE TECH BEHIND THE TASTE</span>
+              <span>THE TECH BEHIND THE MOG</span>
               <b>
                 <Sparkles size={16} /> Gemini
               </b>
@@ -162,7 +162,7 @@ export default function Landing() {
                 <strong>
                   9.2<small>/10</small>
                 </strong>
-                <div>THE DETAILS? DELIVERED.</div>
+                <div>MOGGED. CONFIRMED.</div>
               </div>
             </div>
             <div className="floating-theme">
@@ -174,7 +174,7 @@ export default function Landing() {
               <span>01 / 03</span>
             </div>
             <div className="floating-reaction">
-              🔥 <span>Okay, we see you.</span>
+              🔥 <span>That's a mog.</span>
             </div>
             <div className="stage-note">
               <span className="tiny-line" /> FIT CHECK IN PROGRESS <span>✦</span>
@@ -187,7 +187,7 @@ export default function Landing() {
           <span>✳</span>
           <span>FEEL THE HYPE</span>
           <span>✳</span>
-          <span>OWN THE RUNWAY</span>
+          <span>MOG THE ROOM</span>
           <span>✳</span>
           <span>BRING THE LOOK</span>
           <span>✳</span>
@@ -201,7 +201,7 @@ export default function Landing() {
             </div>
             <p>
               A little competition.
-              <br />A lot of outfit inspiration.
+              <br />A lot of mogging.
             </p>
           </div>
           <div className="steps-grid">
@@ -211,21 +211,21 @@ export default function Landing() {
                 icon: Users,
                 title: 'Round up your people.',
                 text: 'Create a room, pick your themes, and drop the invite in the group chat.',
-                tag: 'YOUR PRIVATE RUNWAY',
+                tag: 'YOUR PRIVATE MOG PIT',
               },
               {
                 n: '02',
                 icon: ScanLine,
                 title: 'Put your fit to the test.',
                 text: 'Step into frame. Our AI judge scores the outfit and gives you tips to level up.',
-                tag: 'GOOD TASTE MEETS GEMINI',
+                tag: 'WHERE THE MOG MEETS GEMINI',
               },
               {
                 n: '03',
                 icon: Crown,
                 title: 'Make the final count.',
                 text: 'Practice is for experimenting. The final round is for taking the crown.',
-                tag: 'ONE FINAL. ALL THE GLORY.',
+                tag: 'ONE FINAL. ALL THE MOG.',
               },
             ].map((s) => (
               <div className="step-card" key={s.n}>
@@ -247,10 +247,10 @@ export default function Landing() {
             <Sparkles />
           </div>
           <div>
-            <h3>We judge the outfit. Keep the energy kind.</h3>
+            <h3>We judge the fit. Keep the mog kind.</h3>
             <p>
               Theme relevance · Color coordination · Fit & styling. Practice scores reset. Only the
-              final decides the winner.
+              final decides who mogs.
             </p>
           </div>
           <span className="outline-tag">STYLE IS FOR EVERYONE</span>
@@ -264,7 +264,7 @@ export default function Landing() {
             ? 'DEMO MODE · SIMULATED AI'
             : config
               ? 'LIVE AI EXPERIENCE'
-              : 'CONNECTING TO THE RUNWAY'}
+              : 'CONNECTING TO THE MOG PIT'}
         </small>
       </footer>
       {mode && (
@@ -293,7 +293,7 @@ export default function Landing() {
                 <input
                   value={code}
                   onChange={(e) => setCode(e.target.value.toUpperCase())}
-                  placeholder="DRIP-XXXXX"
+                  placeholder="MOG-XXXXX"
                   required
                   maxLength={12}
                 />
@@ -302,7 +302,7 @@ export default function Landing() {
               <>
                 <div className="round-control">
                   <span>
-                    Number of rounds<small>The last round decides the winner.</small>
+                    Number of rounds<small>The last round decides who mogs.</small>
                   </span>
                   <div>
                     <button
@@ -368,7 +368,11 @@ export default function Landing() {
             )}
             <ErrorNotice message={error} />
             <Button className="full-width" disabled={busy}>
-              {busy ? 'Opening the runway…' : mode === 'create' ? 'Create battle' : 'Join battle'}
+              {busy
+                ? 'Opening the mog pit…'
+                : mode === 'create'
+                  ? 'Start a mog-off'
+                  : 'Join a mog-off'}
               {busy ? <span className="spinner" /> : <ArrowUpRight size={18} />}
             </Button>
             <p className="form-note">

@@ -53,7 +53,7 @@ async function photoFixture(page: Page) {
 }
 async function state(page: Page) {
   return page.evaluate(async () => {
-    const s = JSON.parse(sessionStorage.getItem('outfit-battle-session')!).state.credentials;
+    const s = JSON.parse(sessionStorage.getItem('who-mogs-who-session')!).state.credentials;
     return (
       await fetch(`/api/rooms/${s.roomCode}/state`, {
         headers: { Authorization: `Bearer ${s.accessToken}` },
@@ -79,17 +79,17 @@ test('two independent browsers complete practice → practice → final → podi
   const errors: string[] = [];
   for (const p of [host, guest]) p.on('pageerror', (e) => errors.push(e.message));
   await host.goto('/');
-  await host.getByRole('button', { name: 'Create battle', exact: true }).click();
+  await host.getByRole('button', { name: 'Start a mog-off', exact: true }).click();
   await host.getByLabel('Your display name').fill('Maya');
   await host
     .getByRole('dialog')
-    .getByRole('button', { name: 'Create battle', exact: true })
+    .getByRole('button', { name: 'Start a mog-off', exact: true })
     .click();
-  await expect(host).toHaveURL(/\/battle\/DRIP-/);
+  await expect(host).toHaveURL(/\/battle\/MOG-/);
   const code = host.url().split('/').pop()!;
   await guest.goto(`/?join=${code}`);
   await guest.getByLabel('Your display name').fill('Alex');
-  await guest.getByRole('dialog').getByRole('button', { name: 'Join battle', exact: true }).click();
+  await guest.getByRole('dialog').getByRole('button', { name: 'Join a mog-off', exact: true }).click();
   await expect(guest).toHaveURL(`/battle/${code}`);
   await expect(host.getByText('Alex', { exact: true })).toBeVisible();
   await expect(guest.getByText('Maya', { exact: true })).toBeVisible();
@@ -100,7 +100,7 @@ test('two independent browsers complete practice → practice → final → podi
     .poll(() => guest.locator('video').evaluate((v) => (v as HTMLVideoElement).videoWidth))
     .toBeGreaterThan(0);
   await host.screenshot({ path: 'test-results/lobby.png', fullPage: true });
-  await host.getByRole('button', { name: 'Start battle' }).click();
+  await host.getByRole('button', { name: 'Start the mog-off' }).click();
   for (let round = 0; round < 3; round++) {
     await expect.poll(async () => (await state(host)).room.phase).toBe('POSE');
     await expect(host.getByRole('button', { name: 'Ready · 7s capture' })).toBeEnabled({
@@ -136,7 +136,7 @@ test('two independent browsers complete practice → practice → final → podi
     ).toBeVisible();
     await expect(host.getByText('Your next look starts here.')).toBeVisible();
     await host.screenshot({ path: `test-results/round-${round + 1}.png`, fullPage: true });
-    const label = round === 2 ? 'Reveal winner' : 'Ready for next round';
+    const label = round === 2 ? 'Reveal who mogs' : 'Ready for next round';
     await host.getByRole('button', { name: label, exact: true }).click();
     await guest.getByRole('button', { name: label, exact: true }).click();
     if (round < 2) {
@@ -147,10 +147,10 @@ test('two independent browsers complete practice → practice → final → podi
     }
   }
   await expect(
-    host.getByRole('heading', { name: /Consider the runway owned|Share the spotlight/ }),
+    host.getByRole('heading', { name: /Consider the room mogged|Share the spotlight/ }),
   ).toBeVisible();
   await expect(
-    guest.getByRole('heading', { name: /Consider the runway owned|Share the spotlight/ }),
+    guest.getByRole('heading', { name: /Consider the room mogged|Share the spotlight/ }),
   ).toBeVisible();
   await expect
     .poll(() =>
@@ -163,7 +163,7 @@ test('two independent browsers complete practice → practice → final → podi
   await expect(host.locator('.podium-scene canvas')).toBeVisible();
   await host.screenshot({ path: 'test-results/podium.png', fullPage: true });
   await host.getByRole('button', { name: 'Rematch', exact: true }).click();
-  await expect(host.getByRole('button', { name: 'Start battle' })).toBeVisible();
+  await expect(host.getByRole('button', { name: 'Start the mog-off' })).toBeVisible();
   expect(errors).toEqual([]);
   await ctxA.close();
   await ctxB.close();
@@ -175,13 +175,13 @@ test('mobile create, closet privacy, upload fallback, disconnected player and fi
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/');
   await page.screenshot({ path: 'test-results/mobile-home.png', fullPage: true });
-  await page.getByRole('button', { name: 'Create battle', exact: true }).click();
+  await page.getByRole('button', { name: 'Start a mog-off', exact: true }).click();
   await page.getByLabel('Your display name').fill('Jordan');
   await page.getByRole('button', { name: 'Fewer rounds' }).click();
   await page.getByRole('button', { name: 'Fewer rounds' }).click();
   await page
     .getByRole('dialog')
-    .getByRole('button', { name: 'Create battle', exact: true })
+    .getByRole('button', { name: 'Start a mog-off', exact: true })
     .click();
   await expect(page).toHaveURL(/\/battle\//);
   await page.getByRole('button', { name: /My closet/ }).click();
@@ -192,14 +192,14 @@ test('mobile create, closet privacy, upload fallback, disconnected player and fi
   const other = await browser.newPage();
   await other.goto(`/?join=${code}`);
   await other.getByLabel('Your display name').fill('Casey');
-  await other.getByRole('dialog').getByRole('button', { name: 'Join battle', exact: true }).click();
+  await other.getByRole('dialog').getByRole('button', { name: 'Join a mog-off', exact: true }).click();
   await expect(other).toHaveURL(`/battle/${code}`);
   expect((await state(other)).mine.closet).toHaveLength(0);
-  await page.getByRole('button', { name: 'Start battle' }).click();
+  await page.getByRole('button', { name: 'Start the mog-off' }).click();
   await expect.poll(async () => (await state(page)).room.phase).toBe('POSE');
   await page.locator('.capture-extras input[type=file]').setInputFiles(await photoFixture(page));
   await expect.poll(async () => (await state(page)).mine.finalized).toBe(true);
-  await other.getByRole('button', { name: 'Leave battle' }).click();
+  await other.getByRole('button', { name: 'Leave mog-off' }).click();
   await expect(page.getByText('THE JUDGE HAS SPOKEN')).toBeVisible();
   await expect(page.getByRole('complementary')).toBeVisible();
   await expect(page.getByText('Your next look starts here.')).toBeVisible();
@@ -207,8 +207,8 @@ test('mobile create, closet privacy, upload fallback, disconnected player and fi
   await expect(page.getByText('CLOSET REFERENCE')).toBeVisible();
   await page.screenshot({ path: 'test-results/mobile-coach.png', fullPage: true });
   await page.getByRole('button', { name: 'Close styling coach' }).click();
-  await page.getByRole('button', { name: 'Reveal winner', exact: true }).click();
-  await expect(page.getByRole('heading', { name: 'Consider the runway owned.' })).toBeVisible();
+  await page.getByRole('button', { name: 'Reveal who mogs', exact: true }).click();
+  await expect(page.getByRole('heading', { name: 'Consider the room mogged.' })).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(
     true,
   );
@@ -236,15 +236,15 @@ test('pose guidance is advisory: Ready and capture work while framing is invalid
     });
   });
   await page.goto('/');
-  await page.getByRole('button', { name: 'Create battle', exact: true }).click();
+  await page.getByRole('button', { name: 'Start a mog-off', exact: true }).click();
   await page.getByLabel('Your display name').fill('Framing check');
   await page.getByRole('button', { name: 'Fewer rounds' }).click();
   await page.getByRole('button', { name: 'Fewer rounds' }).click();
   await page
     .getByRole('dialog')
-    .getByRole('button', { name: 'Create battle', exact: true })
+    .getByRole('button', { name: 'Start a mog-off', exact: true })
     .click();
-  await page.getByRole('button', { name: 'Start battle' }).click();
+  await page.getByRole('button', { name: 'Start the mog-off' }).click();
   await page.evaluate(() => {
     (globalThis as typeof globalThis & { __invalidTestPose: boolean }).__invalidTestPose = true;
   });

@@ -4,11 +4,11 @@ import { motion } from 'framer-motion';
 import { useSession } from '../stores/session';
 export function Brand() {
   return (
-    <a href="/" className="brand" aria-label="Outfit Battle home">
+    <a href="/" className="brand" aria-label="Who Mogs Who home">
       <span className="brand-mark">◈</span>
       <span>
-        OUTFIT<span className="brand-light">BATTLE</span>
-        <small>THE RUNWAY IS YOURS</small>
+        WHO MOGS<span className="brand-light">WHO</span>
+        <small>MOG OR GET MOGGED</small>
       </span>
     </a>
   );

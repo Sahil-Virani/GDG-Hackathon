@@ -129,10 +129,10 @@ export class GameStore {
     });
   }
   create(name: string, themes: string[], showThemes = true) {
-    if (this.rooms.size >= 100) throw new GameError('The runway is full. Try again later.', 503);
+    if (this.rooms.size >= 100) throw new GameError('The mog pit is full. Try again later.', 503);
     let code: string;
     do {
-      code = `DRIP-${randomBytes(3).toString('hex').slice(0, 5).toUpperCase()}`;
+      code = `MOG-${randomBytes(3).toString('hex').slice(0, 5).toUpperCase()}`;
     } while (this.rooms.has(code));
     const room: Room = {
       roomCode: code,

@@ -1,8 +1,8 @@
-# OUTFIT RATING BATTLE
+# WHO MOGS WHO
 
-**Good friends. Great fits. One winner.**
+**Good friends. Great fits. Only one mogs.**
 
-A multiplayer fashion game show built for the GDG hackathon: embedded video calls, on-device outfit framing, a private AI fashion judge, practice rounds with styling advice, and a final-round-only championship podium.
+A multiplayer fit-check game show built for the GDG hackathon: embedded video calls, on-device outfit framing, a private AI drip judge, practice rounds with styling advice, and a final-round-only mogging championship.
 
 ## Run locally
 
@@ -126,7 +126,7 @@ client/src/
   hooks/        Camera/Vonage lifecycle, room sync, MediaPipe framing
   lib/          HTTP client, image compression, pure pose geometry, sound events
   stores/       Zustand tab session
-  styles.css    Custom responsive runway visual system + Tailwind
+  styles.css    Custom responsive mog-pit visual system + Tailwind
 server/src/
   state/game.ts Authoritative room engine, transitions, ranking, recovery
   services/     Vonage, Gemini, retry logic

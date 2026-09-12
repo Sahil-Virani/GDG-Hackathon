@@ -25,13 +25,11 @@ export function Leaderboard({
           <Sparkles size={13} /> THE JUDGE HAS SPOKEN
         </span>
         <h2>
-          {round.type === 'final'
-            ? 'The final fit check.'
-            : 'A little practice. A lot of presence.'}
+          {round.type === 'final' ? 'The final fit check.' : 'A little practice. A lot of mog.'}
         </h2>
         <p>
           {round.type === 'final'
-            ? 'These are the only scores that count toward the crown.'
+            ? 'These are the only scores that count toward the mog.'
             : 'Fresh round, fresh scores. Take the feedback into your next look.'}
         </p>
       </div>

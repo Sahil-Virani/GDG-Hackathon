@@ -8,7 +8,7 @@ export function FitIllustration({ variant = 0 }: { variant?: number }) {
   return (
     <svg
       viewBox="0 0 300 470"
-      aria-label="Illustrated runway outfit"
+      aria-label="Illustrated fit example"
       role="img"
       className="fit-illustration"
     >

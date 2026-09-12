@@ -13,7 +13,7 @@ class AppBoundary extends Component<{ children: ReactNode }, { failed: boolean }
   render() {
     return this.state.failed ? (
       <main className="missing-room">
-        <h1>A quick runway reset.</h1>
+        <h1>A quick mog pit reset.</h1>
         <p>Something interrupted this page. Your game state is saved on the server.</p>
         <button className="button primary" onClick={() => location.reload()}>
           Reconnect
@@ -32,7 +32,7 @@ createRoot(document.getElementById('root')!).render(
           fallback={
             <div className="missing-room">
               <span className="judge-spinner">✳</span>
-              <h2>Opening the runway…</h2>
+              <h2>Opening the mog pit…</h2>
             </div>
           }
         >

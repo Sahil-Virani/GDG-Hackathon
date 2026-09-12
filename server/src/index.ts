@@ -18,7 +18,7 @@ const server = app.listen(config.PORT, '0.0.0.0', (error?: Error) => {
     return;
   }
   console.log(
-    `Outfit Battle API on http://localhost:${config.PORT} · ${config.demo ? 'DEMO AI' : 'LIVE AI'} · ${config.videoEnabled ? 'VONAGE VIDEO' : 'LOCAL CAMERA ONLY'}`,
+    `Who Mogs Who API on http://localhost:${config.PORT} · ${config.demo ? 'DEMO AI' : 'LIVE AI'} · ${config.videoEnabled ? 'VONAGE VIDEO' : 'LOCAL CAMERA ONLY'}`,
   );
 });
 for (const signal of ['SIGINT', 'SIGTERM'])

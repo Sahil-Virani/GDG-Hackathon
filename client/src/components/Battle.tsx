@@ -44,8 +44,8 @@ export default function Battle() {
     return (
       <div className="missing-room">
         <Brand />
-        <h1>Your runway awaits.</h1>
-        <p>Join this room to enter the battle.</p>
+        <h1>Your mog-off awaits.</h1>
+        <p>Join this room to enter the mog-off.</p>
         <Button onClick={() => navigate(`/?join=${encodeURIComponent(code)}`)}>
           Join {code} <ArrowUpRight size={18} />
         </Button>
@@ -56,7 +56,7 @@ export default function Battle() {
       <div className="missing-room">
         <Brand />
         <span className="judge-spinner">✳</span>
-        <h2>Opening the runway…</h2>
+        <h2>Opening the mog pit…</h2>
         <ErrorNotice message={error} retry={() => void refresh()} />
         <Button variant="secondary" onClick={() => navigate('/')}>
           Back to home
@@ -209,7 +209,7 @@ function BattleRoom({
             <span className="status-dot" />
             {video.connection}
           </span>
-          <button className="icon-button" onClick={() => void leave()} aria-label="Leave battle">
+          <button className="icon-button" onClick={() => void leave()} aria-label="Leave mog-off">
             <DoorOpen size={18} />
           </button>
         </div>
@@ -241,7 +241,7 @@ function BattleRoom({
             <div>
               <span className={`eyebrow ${final && !lobby ? 'gold-text' : ''}`}>
                 {lobby
-                  ? 'THE PRE-SHOW'
+                  ? 'THE PRE-MOG'
                   : final
                     ? 'FINAL ROUND · THIS ONE COUNTS.'
                     : `PRACTICE ROUND ${round.index + 1} OF ${room.totalRounds}`}
@@ -254,7 +254,7 @@ function BattleRoom({
                 {lobby
                   ? 'Check your camera. Curate your closet. Get ready to show up.'
                   : revealed
-                    ? 'The looks are in. Time for a little feedback.'
+                    ? 'The mogs are in. Time for a little feedback.'
                     : 'Find your frame. Bring your energy. Make this look yours.'}
               </p>
             </div>
@@ -356,7 +356,7 @@ function BattleRoom({
                         </div>
                         <span className="invite-tile-copy">
                           <span className="invite-plus">+</span>
-                          <h3>A runway is better with friends.</h3>
+                          <h3>A mog-off is better with friends.</h3>
                           <p>Send the invite. Start the friendly rivalry.</p>
                           <span>
                             {copied === 'link' ? 'INVITE COPIED' : 'COPY INVITE LINK'}{' '}
@@ -398,7 +398,7 @@ function BattleRoom({
                       <Check size={16} />
                       <span>
                         {readyCount} / {connected.length} players{' '}
-                        {final ? 'ready for the winner' : 'ready for next round'}
+                        {final ? 'ready to see who mogs' : 'ready for next round'}
                       </span>
                     </>
                   ) : mine.finalized ? (
@@ -424,7 +424,7 @@ function BattleRoom({
                 </div>
                 {lobby ? (
                   <Button disabled={!isHost || busy} onClick={() => void action('start')}>
-                    {isHost ? 'Start battle' : 'Waiting for host'}
+                    {isHost ? 'Start the mog-off' : 'Waiting for host'}
                     <Play size={16} />
                   </Button>
                 ) : revealed ? (
@@ -439,7 +439,7 @@ function BattleRoom({
                       </>
                     ) : final ? (
                       <>
-                        Reveal winner <Crown size={16} />
+                        Reveal who mogs <Crown size={16} />
                       </>
                     ) : (
                       <>
@@ -516,7 +516,7 @@ function BattleRoom({
                     <b>A little prep goes a long way.</b>
                     <span>
                       Add a few pieces to your closet for personalized advice. Practice rounds are
-                      for experimenting — only the final counts.
+                      for experimenting — only the final decides who mogs.
                     </span>
                   </div>
                 </div>
@@ -568,7 +568,7 @@ function BattleRoom({
               <h1>{round.theme}</h1>
               <p>
                 {final
-                  ? 'Practice is over. This is your moment.'
+                  ? 'Practice is over. Time to mog.'
                   : 'New theme. Fresh start. Make it yours.'}
               </p>
               <b className="theme-count">

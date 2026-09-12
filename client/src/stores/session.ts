@@ -7,7 +7,7 @@ interface SessionState {
 }
 export const useSession = create<SessionState>()(
   persist((set) => ({ credentials: null, setCredentials: (credentials) => set({ credentials }) }), {
-    name: 'outfit-battle-session',
+    name: 'who-mogs-who-session',
     storage: createJSONStorage(() => sessionStorage),
   }),
 );

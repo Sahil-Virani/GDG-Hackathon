@@ -12,7 +12,7 @@ export async function api<T>(path: string, body?: unknown, method?: string): Pro
   });
   const data = await response.json();
   if (!response.ok)
-    throw new Error(data.error || 'The runway hit a connection issue. Please try again.');
+    throw new Error(data.error || 'The mog pit hit a connection issue. Please try again.');
   return data as T;
 }
 export const roomPath = () => `/rooms/${useSession.getState().credentials!.roomCode}`;

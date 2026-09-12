@@ -106,7 +106,7 @@ export function VideoTile({
               <Radio size={11} /> YOU
             </>
           ) : (
-            'ON THE RUNWAY'
+            'IN THE ARENA'
           )}
         </span>
         {host && (
@@ -170,7 +170,7 @@ export function VideoTile({
               : person.status === 'judging'
                 ? 'AI judging'
                 : local
-                  ? 'Your personal runway'
+                  ? 'Your personal mog zone'
                   : 'Ready for a fit check'}
           </small>
         </div>

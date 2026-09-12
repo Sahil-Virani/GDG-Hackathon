@@ -43,9 +43,9 @@ export function FinalResults({
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3 }}
       >
-        <span className="eyebrow gold-text">THE FINAL LOOK. THE LAST WORD.</span>
-        <h1>{winners.length > 1 ? 'Share the spotlight.' : 'Consider the runway owned.'}</h1>
-        <p>OUTFIT BATTLE {winners.length > 1 ? 'CO-CHAMPIONS' : 'CHAMPION'}</p>
+        <span className="eyebrow gold-text">THE FINAL MOG. THE LAST WORD.</span>
+        <h1>{winners.length > 1 ? 'Share the spotlight.' : 'Consider the room mogged.'}</h1>
+        <p>WHO MOGS WHO {winners.length > 1 ? 'CO-MOGGERS' : 'CHAMPION MOGGER'}</p>
       </motion.div>
       <div className="podium-scene">
         <Suspense fallback={<div className="scene-fallback" />}>
