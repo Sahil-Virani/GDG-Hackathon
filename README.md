@@ -52,6 +52,7 @@ Fill in the values and restart the development server. Keep `.env` and the priva
 | `VONAGE_PRIVATE_KEY_PATH` | empty                    | Absolute path to the application's matching PEM private key                                      |
 | `GEMINI_API_KEY`          | empty                    | Server-only Google AI Studio API key                                                             |
 | `GEMINI_SCORING_MODEL`    | `gemini-3.8-flash`       | Configurable multimodal model for judging and structured coaching                                |
+| `GEMINI_FALLBACK_MODEL`   | `gemini-3.5-flash`       | Retried once when the scoring model returns HTTP 429/500/503/504; empty disables                 |
 | `GEMINI_IMAGE_MODEL`      | `gemini-3.1-flash-image` | Optional garment preview model                                                                   |
 | `PORT`                    | `3002`                   | Express port                                                                                     |
 | `ROUND_TIMEOUT_SECONDS`   | `180`                    | Capture window, range 20–900 seconds                                                             |

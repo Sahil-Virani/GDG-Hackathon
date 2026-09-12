@@ -9,6 +9,7 @@ const env = z
     VONAGE_PRIVATE_KEY_PATH: z.string().default(''),
     GEMINI_API_KEY: z.string().default(''),
     GEMINI_SCORING_MODEL: z.string().default('gemini-3.8-flash'),
+    GEMINI_FALLBACK_MODEL: z.string().default('gemini-3.5-flash'),
     GEMINI_IMAGE_MODEL: z.string().default('gemini-3.1-flash-image'),
   })
   .parse(process.env);
