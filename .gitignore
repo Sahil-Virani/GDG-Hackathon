@@ -5,6 +5,8 @@ dist/
 !.env.example
 *.pem
 *.key
+*-service-account*.json
+tribal-dispatch-508414-b9-b674569fb190.json
 playwright-report/
 test-results/
 .DS_Store

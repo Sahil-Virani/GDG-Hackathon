@@ -10,14 +10,22 @@ const env = z
     GEMINI_API_KEY: z.string().default(''),
     GEMINI_SCORING_MODEL: z.string().default('gemini-3.8-flash'),
     GEMINI_IMAGE_MODEL: z.string().default('gemini-3.1-flash-image'),
+    GOOGLE_GENAI_USE_VERTEXAI: z.enum(['true', 'false']).default('false'),
+    GOOGLE_CLOUD_PROJECT: z.string().default(''),
+    GOOGLE_CLOUD_LOCATION: z.string().default(''),
+    GOOGLE_APPLICATION_CREDENTIALS: z.string().default(''),
   })
   .parse(process.env);
 export const config = {
   ...env,
   demo: env.DEMO_MODE === 'true',
   videoEnabled: !!(env.VONAGE_APPLICATION_ID && env.VONAGE_PRIVATE_KEY_PATH),
+  vertexEnabled: env.GOOGLE_GENAI_USE_VERTEXAI === 'true',
 };
-if (!config.demo && (!config.GEMINI_API_KEY || !config.videoEnabled))
+const geminiConfigured = config.vertexEnabled
+  ? !!(config.GOOGLE_CLOUD_PROJECT && config.GOOGLE_CLOUD_LOCATION && config.GOOGLE_APPLICATION_CREDENTIALS)
+  : !!config.GEMINI_API_KEY;
+if (!config.demo && (!geminiConfigured || !config.videoEnabled))
   throw new Error(
-    'Live mode requires GEMINI_API_KEY, VONAGE_APPLICATION_ID and VONAGE_PRIVATE_KEY_PATH. See .env.example.',
+    'Live mode requires either GEMINI_API_KEY or (GOOGLE_GENAI_USE_VERTEXAI=true with GOOGLE_CLOUD_PROJECT, GOOGLE_CLOUD_LOCATION, GOOGLE_APPLICATION_CREDENTIALS), plus VONAGE_APPLICATION_ID and VONAGE_PRIVATE_KEY_PATH. See .env.example.',
   );

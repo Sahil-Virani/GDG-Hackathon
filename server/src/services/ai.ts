@@ -10,9 +10,17 @@ import {
 import { config } from '../config.js';
 import { judgeWithRetry } from './judging.js';
 import { normalizeJudgment, type Submission } from '../state/game.js';
-const ai = config.GEMINI_API_KEY
-  ? new GoogleGenAI({ apiKey: config.GEMINI_API_KEY, httpOptions: { timeout: 18000 } })
-  : undefined;
+const ai = config.vertexEnabled
+  ? new GoogleGenAI({
+      vertexai: true,
+      project: config.GOOGLE_CLOUD_PROJECT,
+      location: config.GOOGLE_CLOUD_LOCATION,
+      googleAuthOptions: { keyFilename: config.GOOGLE_APPLICATION_CREDENTIALS },
+      httpOptions: { timeout: 18000 },
+    })
+  : config.GEMINI_API_KEY
+    ? new GoogleGenAI({ apiKey: config.GEMINI_API_KEY, httpOptions: { timeout: 18000 } })
+    : undefined;
 export function imagePart(image: string): Part {
   const [header, data] = image.split(',');
   return { inlineData: { mimeType: header.slice(5).split(';')[0], data } };

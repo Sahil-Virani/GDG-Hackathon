@@ -1,0 +1,33 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git fetch *)",
+      "Bash(npm -v)",
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(pkill -f \"tsx watch server/src/index.ts\")",
+      "Bash(pkill -f \"vite --host 0.0.0.0\")",
+      "Bash(lsof -ti:3002,5173)",
+      "Bash(xargs -r kill -9)",
+      "Bash(pkill -9 -f \"tsx watch server/src/index.ts\")",
+      "Bash(pkill -9 -f \"vite --host\")",
+      "Bash(lsof -i:3002,5173)",
+      "Bash(node /private/tmp/claude-501/-Users-shivasaivummaji-Desktop-CS-DS-GDG-Hackathon/b23b1bc4-836d-4199-b1b8-9fe9c721b4fc/scratchpad/test-gemini.mjs)",
+      "Bash(node test-gemini-debug.mjs)",
+      "Bash(python3 -c ' *)",
+      "Bash(git check-ignore *)",
+      "Bash(echo \"exit:$?\")",
+      "Bash(node test-vertex-debug.mjs gemini-3.8-flash)",
+      "Bash(npx tsx *)",
+      "Bash(npm test *)",
+      "Bash(curl -s http://localhost:3002/api/config)",
+      "Bash(curl -sI --max-time 8 https://raw.githubusercontent.com/zalandoresearch/fashion-mnist/master/data/fashion/t10k-labels-idx1-ubyte.gz)",
+      "Bash(mkdir -p /tmp/fashion-mnist)",
+      "Read(//tmp/**)",
+      "Bash(curl -sL -o t10k-images-idx3-ubyte.gz https://raw.githubusercontent.com/zalandoresearch/fashion-mnist/master/data/fashion/t10k-images-idx3-ubyte.gz)",
+      "Bash(curl -sL -o t10k-labels-idx1-ubyte.gz https://raw.githubusercontent.com/zalandoresearch/fashion-mnist/master/data/fashion/t10k-labels-idx1-ubyte.gz)",
+      "Bash(gunzip -f t10k-images-idx3-ubyte.gz t10k-labels-idx1-ubyte.gz)",
+      "Bash(python3 -c \"import PIL; print\\('Pillow OK', PIL.__version__\\)\")"
+    ]
+  }
+}
